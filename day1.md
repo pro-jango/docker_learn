@@ -47,7 +47,7 @@ Redirecting to /bin/systemctl start docker.service
 ```
 [root@tw06873s6 ~]# docker images
 REPOSITORY                                        TAG                 IMAGE ID            CREATED             SIZE
-registry.xunlei.cn/xlvip/openvip                  0.3.0               3f68de0483fc        5 weeks ago         210.5 MB
+registry.xxx.com/vipproject/hello                  0.3.0               3f68de0483fc        5 weeks ago         210.5 MB
 
 ```
 * 2、docker信息
@@ -66,28 +66,28 @@ Containers: 1 # 容器个数 Images: 22 # 镜像个数 Storage Driver: devicemap
 * 下载时遇到了一个https的问题：
 * 解决方法是在/etc/docker/daemon.json中添加 insecure-registries 列表
 ```
-[root@localhost ~]# docker pull registry.xxxx.cn/xxx/xxx:0.3.0 
-Trying to pull repository registry.xxxxx.cn/xxx/xxx ... 
-Get https://registry.xxx.cn/v1/_ping: x509: certificate is valid for *.xxx.com, xxx.com, not registry.xxx.cn
+[root@localhost ~]# docker pull registry.xxxx.com/xxx/xxx:0.3.0 
+Trying to pull repository registry.xxxxx.com/xxx/xxx ... 
+Get https://registry.xxx.com/v1/_ping: x509: certificate is valid for *.xxx.com, xxx.com, not registry.xxx.com
 报证书错误的问题。
 
 [root@localhost ~]# vim /etc/docker/daemon.json
 {
-"insecure-registries" : ["registry.xxxx.cn"]
+"insecure-registries" : ["registry.xxxx.com"]
 }
 
 [root@localhost ~]# systemctl restart docker
 ```
 * 2、运行私有镜像
 ```
-[root@localhost ~]# docker run registry.xxxx.cn/xxxx/xxxx /opt/openvip/vip.b
-Unable to find image 'registry.xxxx.cn/xxxx/xxxx:latest' locally
-Trying to pull repository registry.xxxx.cn/xxxx/xxxx ... 
-Pulling repository registry.xxxx.cn/xxxx/xxxx
+[root@localhost ~]# docker run registry.xxxx.com/xxxx/xxxx /opt/hello/vip.b
+Unable to find image 'registry.xxxx.com/xxxx/xxxx:latest' locally
+Trying to pull repository registry.xxxx.com/xxxx/xxxx ... 
+Pulling repository registry.xxxx.com/xxxx/xxxx
 /usr/bin/docker-current: Error: image xxxx/xxxx:latest not found.
 See '/usr/bin/docker-current run --help'.
 # 提示找不到latest版本的镜像，原来是镜像在运行时需要加上版本号。
-[root@localhost ~]# docker run registry.xxxx.cn/xxxx/xxxx:0.3.0 /opt/xxxx/vip.b
+[root@localhost ~]# docker run registry.xxxx.com/xxxx/xxxx:0.3.0 /opt/hello/vip.b
 #运行成功
 ```
 * 3、安装国内阿里云的镜像

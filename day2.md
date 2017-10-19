@@ -4,12 +4,12 @@
 * 查看当前系统中docker的版本号
 ```
 #保存镜像到文件
-[root@localhost ~]# docker save -o /home/xl_dev/mmm.tar golang:latest
+[root@localhost ~]# docker save -o /home/vip_dev/mmm.tar golang:latest
 #从文件导入到docker镜像列表
-[root@localhost ~]# docker load < /home/xl_dev/mmm.tar
+[root@localhost ~]# docker load < /home/vip_dev/mmm.tar
 #删除名字叫golang的镜像。
 [root@localhost ~]# docker rmi golang
-[root@localhost test]# docker load < /home/xl_dev/mmm.tar
+[root@localhost test]# docker load < /home/vip_dev/mmm.tar
 Loaded image: golang:latest
 #多次导入不会多次出现
 ```
@@ -23,8 +23,7 @@ CONTAINER ID        IMAGE                                    COMMAND            
 d9195b621c2e        web-app                                  "go-wrapper run"         About an hour ago   Up About an hour          0.0.0.0:8081->8080/tcp   test2
 8b6ca4d67d78        web-app                                  "go-wrapper run"         About an hour ago   Up About an hour          0.0.0.0:8080->8080/tcp   test
 cdd59bb9a1cc        golang:latest                            "-d"                     2 hours ago         Created                                            naughty_bose
-04ea0aed7273        golang:latest                            "bash"                   2 hours ago         Exited (0) 2 hours ago                             hopeful_bardeen
-de6130b3deb2        registry.xunlei.cn/xlvip/openvip:0.3.0   "/opt/openvip/xlvip.b"   19 hours ago        Exited (1) 19 hours ago                            boring_kilby
+04ea0aed7273        golang:latest                            "bash"                   2 hours ago         Exited (0) 2 hours ago                             hopeful_bardeen                         boring_kilby
 #停止名字为test的容器，此时的停止不是终止，容器还在列表之中。
 [root@tw06873s6 ~]# docker stop test
 #启动名字为test的容器
